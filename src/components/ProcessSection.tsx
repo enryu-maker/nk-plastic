@@ -14,51 +14,46 @@ const steps = [
 
 const ProcessSection = () => {
     return (
-        <section id="process" className="section-padding bg-brand-50/30">
-            <div className="container mx-auto px-10">
+        <section id="process" className="section-padding bg-white relative">
+            <div className="container mx-auto px-6 md:px-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-20"
+                    className="text-center mb-24"
                 >
-                    <span className="text-sm font-bold text-brand-500 uppercase tracking-[0.2em] mb-4 block">Workflow</span>
-                    <h2 className="text-4xl md:text-5xl font-bold mt-2 mb-6">Our Manufacturing Process</h2>
-                    <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-                        We maintain complete transparency and rigorous quality checks at every stage of the recycling lifecycle.
-                    </p>
+                    <span className="text-sm font-bold text-brand-500 uppercase tracking-[0.2em] mb-4 block">Our Workflow</span>
+                    <h2 className="text-4xl md:text-5xl font-bold font-display text-foreground tracking-tight">Seamless Manufacturing Process</h2>
+                    <div className="h-1.5 w-20 bg-brand-500 mx-auto mt-6 rounded-full" />
                 </motion.div>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 relative">
-                    {/* Background line for desktop */}
-                    <div className="absolute top-10 left-0 w-full h-0.5 bg-brand-100 hidden lg:block z-0" />
-                    
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 relative">
                     {steps.map((step, i) => (
                         <motion.div
                             key={step.label}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1 }}
-                            className="flex flex-col items-center text-center relative z-10"
+                            className="flex flex-col items-start gap-6 p-10 rounded-[2.5rem] bg-brand-50 border border-brand-100/50 relative group hover:bg-white hover:shadow-2xl hover:shadow-brand-500/10 transition-all duration-500"
                         >
-                            <div className="relative group">
-                                <div className="w-20 h-20 rounded-3xl bg-white shadow-xl shadow-brand-500/5 flex items-center justify-center mb-6 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300 border border-brand-100/50">
+                            <div className="flex-shrink-0 relative">
+                                <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-brand-500 shadow-xl shadow-brand-500/5 group-hover:bg-brand-500 group-hover:text-white transition-all">
                                     <step.icon size={32} />
                                 </div>
-                                <span className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-brand-500 text-white text-xs font-bold flex items-center justify-center shadow-lg border-4 border-white">
+                                <span className="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-brand-500 text-white text-[10px] font-bold flex items-center justify-center border-4 border-white shadow-lg">
                                     {i + 1}
                                 </span>
                             </div>
-                            <h4 className="text-lg font-bold text-brand-950 mb-2">{step.label}</h4>
-                            <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{step.desc}</p>
                             
-                            {/* Desktop connector arrow */}
-                            {i < steps.length - 1 && (
-                               <div className="absolute top-10 -right-4 text-brand-100 hidden lg:block">
-                                  <ArrowRight size={16} />
-                               </div>
-                            )}
+                            <div className="flex flex-col">
+                                <h4 className="text-xl font-bold font-display text-foreground mb-3 transition-colors group-hover:text-brand-500">
+                                    {step.label}
+                                </h4>
+                                <p className="text-muted-foreground text-sm leading-relaxed">
+                                    {step.desc}
+                                </p>
+                            </div>
                         </motion.div>
                     ))}
                 </div>

@@ -1,5 +1,3 @@
-"use client";
-
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
@@ -11,18 +9,10 @@ import SellScrapSection from "@/components/SellScrapSection";
 import FooterCTA from "@/components/FooterCTA";
 
 const Index = () => {
-  return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Lovable-style Glow Effect */}
-      <div
-        className="fixed inset-0 pointer-events-none z-0 opacity-40 select-none"
-        style={{
-          background: "radial-gradient(circle at center, transparent 20%, rgba(59, 130, 246, 0.05) 100%)"
-        }}
-      />
-
-      <div className="relative z-10 ">
-        <Navbar />
+    return (
+        <div className="min-h-screen bg-background">
+            <Navbar />
+            <main>
         <HeroSection />
         <ServicesSection />
         <AboutSection />
@@ -30,8 +20,8 @@ const Index = () => {
         <ProcessSection />
         <WhyChooseSection />
         <SellScrapSection />
-        <FooterCTA />
-      </div>
+      </main>
+      <FooterCTA />
     </div>
   );
 };

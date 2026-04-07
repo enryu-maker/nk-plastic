@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit, Roboto_Mono } from "next/font/google";
+import { Outfit, Inter } from "next/font/google";
 import "./globals.css";
 import heroImg from "@/assets/hero-factory.jpg";
 
@@ -8,8 +8,8 @@ const outfit = Outfit({
   subsets: ["latin"],
 });
 
-const robotoMono = Roboto_Mono({
-  variable: "--font-roboto-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -35,9 +35,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${outfit.variable} ${robotoMono.variable} antialiased selection:bg-brand-100 selection:text-brand-900`}
+        className={`${outfit.variable} ${inter.variable} antialiased selection:bg-brand-500/20 selection:text-brand-950`}
       >
         {children}
       </body>

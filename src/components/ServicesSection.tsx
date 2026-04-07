@@ -26,37 +26,36 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="section-padding bg-linear-to-b from-white to-brand-50/30">
-      <div className="container mx-auto px-10">
+    <section id="services" className="section-padding bg-white relative overflow-hidden">
+      <div className="container mx-auto px-6 md:px-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <span className="text-sm font-bold text-green-800 uppercase tracking-[0.2em] mb-4 block">What We Do</span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-2 mb-6">Our Services</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            End-to-end plastic recycling solutions — from scrap collection to finished granules.
-          </p>
+          <span className="text-sm font-bold text-brand-500 uppercase tracking-[0.2em] mb-4 block">Our Expertise</span>
+          <h2 className="text-4xl md:text-5xl font-bold mt-2 font-display tracking-tight">Industrial Manufacturing Solutions</h2>
+          <div className="h-1.5 w-20 bg-brand-500 mx-auto mt-6 rounded-full" />
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {services.map((s, i) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {services.map((service, index) => (
             <motion.div
-              key={s.title}
-              initial={{ opacity: 0, y: 30 }}
+              key={service.title}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="group relative bg-white rounded-3xl p-10 border border-border/60 hover:border-brand-500/30 transition-all hover:shadow-2xl hover:shadow-brand-500/10"
+              transition={{ delay: index * 0.1 }}
+              className="group p-8 rounded-3xl bg-white border border-brand-100 hover:border-brand-500/30 hover:shadow-2xl hover:shadow-brand-500/10 transition-all duration-300"
             >
-              <div className="w-16 h-16 rounded-2xl bg-brand-50 flex items-center justify-center mb-8 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300">
-                <s.icon size={32} />
+              <div className="w-16 h-16 rounded-2xl bg-brand-50 flex items-center justify-center text-brand-500 mb-6 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300">
+                <service.icon size={32} />
               </div>
-              <h3 className="text-2xl font-bold mb-4">{s.title}</h3>
-              <p className="text-muted-foreground leading-relaxed text-lg mb-6">{s.desc}</p>
-              <div className="h-1 w-12 bg-brand-50 rounded-full group-hover:w-full transition-all duration-500" />
+              <h3 className="text-xl font-bold mb-4 font-display text-foreground">{service.title}</h3>
+              <p className="text-muted-foreground leading-relaxed text-sm">
+                {service.desc}
+              </p>
             </motion.div>
           ))}
         </div>
