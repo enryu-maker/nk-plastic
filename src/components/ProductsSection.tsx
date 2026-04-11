@@ -27,69 +27,80 @@ const ProductsSection = () => {
     const [activeTab, setActiveTab] = useState<"granules" | "grinding">("granules");
 
     return (
-        <section id="products" className="section-padding bg-brand-50/30">
-            <div className="container mx-auto px-6 md:px-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-center mb-16"
-                >
-                    <span className="text-sm font-bold text-brand-500 uppercase tracking-[0.2em] mb-4 block">Industrial Catalog</span>
-                    <h2 className="text-4xl md:text-5xl font-bold mt-2 font-display tracking-tight text-foreground">Premium Polymer Products</h2>
-                    <div className="h-1.5 w-20 bg-brand-500 mx-auto mt-6 rounded-full" />
-                </motion.div>
+        <section id="products" className="section-padding bg-industrial-950 relative overflow-hidden">
+            {/* Background Branding Elements */}
+            <div className="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">
+                <div className="absolute -top-24 -right-24 text-[20rem] font-black text-white/5 select-none font-display italic">NK</div>
+            </div>
 
-                <div className="flex justify-center mb-16">
-                    <div className="flex p-1.5 bg-white rounded-2xl shadow-xl shadow-brand-500/5 border border-brand-100">
+            <div className="container mx-auto px-6 md:px-10 relative z-10">
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-24">
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="max-w-2xl"
+                    >
+                        <div className="flex items-center gap-4 mb-6">
+                            <div className="h-0.5 w-12 bg-brand-500" />
+                            <span className="text-sm font-black text-brand-500 uppercase tracking-[0.4em]">Our Products</span>
+                        </div>
+                        <h2 className="text-5xl md:text-7xl font-black font-display text-white tracking-tighter leading-none mb-8">
+                            PREMIUM RECYCLED <br /> 
+                            <span className="text-brand-500">POLYMERS</span>.
+                        </h2>
+                        <p className="text-white/90 text-xl font-bold leading-relaxed">
+                            Certified industrial-grade LDPE, HDPE, and PP granules manufactured for consistency and high-performance manufacturing.
+                        </p>
+                    </motion.div>
+
+                    <div className="flex p-2 bg-white/5 backdrop-blur-3xl rounded-[2rem] border border-white/10">
                         <button
                             onClick={() => setActiveTab("granules")}
-                            className={`px-8 py-3 rounded-xl text-sm font-bold transition-all ${
+                            className={`px-10 py-5 rounded-[1.5rem] text-sm font-black uppercase tracking-widest transition-all ${
                                 activeTab === "granules"
-                                    ? "bg-brand-500 text-white shadow-lg shadow-brand-500/20"
-                                    : "text-muted-foreground hover:text-brand-500"
+                                    ? "bg-brand-500 text-white shadow-2xl shadow-brand-500/40"
+                                    : "text-white/40 hover:text-white"
                             }`}
                         >
-                            Polymer Granules
+                            Granules
                         </button>
                         <button
                             onClick={() => setActiveTab("grinding")}
-                            className={`px-8 py-3 rounded-xl text-sm font-bold transition-all ${
+                            className={`px-10 py-5 rounded-[1.5rem] text-sm font-black uppercase tracking-widest transition-all ${
                                 activeTab === "grinding"
-                                    ? "bg-brand-500 text-white shadow-lg shadow-brand-500/20"
-                                    : "text-muted-foreground hover:text-brand-500"
+                                    ? "bg-brand-500 text-white shadow-2xl shadow-brand-500/40"
+                                    : "text-white/40 hover:text-white"
                             }`}
                         >
-                            Industrial Grinding
+                            Grinding
                         </button>
                     </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {products[activeTab].map((product, i) => (
                         <motion.div
                             key={product.name}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1 }}
-                            className="group bg-white rounded-[2.5rem] overflow-hidden border border-brand-100/50 hover:border-brand-500/30 hover:shadow-2xl hover:shadow-brand-500/10 transition-all duration-500"
+                            className="group relative h-[600px] rounded-[3rem] overflow-hidden bg-industrial-900 border border-white/5 hover:border-brand-500/30 transition-all duration-700"
                         >
-                            <div className="aspect-[4/3] relative overflow-hidden">
-                                <Image
-                                    src={product.image}
-                                    alt={product.name}
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-brand-950/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
-                                   <span className="text-white text-sm font-bold uppercase tracking-widest">View Specifications</span>
-                                </div>
-                            </div>
-                            <div className="p-8">
-                                <h4 className="text-2xl font-bold text-foreground mb-3 font-display">{product.name}</h4>
-                                <p className="text-muted-foreground text-sm leading-relaxed">
+                            <Image
+                                src={product.image}
+                                alt={`High-Quality ${product.name} for Industrial Manufacturing - NK Plastics`}
+                                className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000"
+                            />
+                            
+                            <div className="absolute inset-0 bg-gradient-to-t from-industrial-950 via-industrial-950/20 to-transparent flex flex-col justify-end p-10">
+                                <span className="text-brand-500 text-xs font-black uppercase tracking-[0.3em] mb-4 drop-shadow-lg">Industrial Grade</span>
+                                <h3 className="text-3xl font-black text-white mb-4 font-display italic tracking-tight uppercase">{product.name}</h3>
+                                <p className="text-white/60 text-sm font-medium leading-relaxed mb-8 max-w-xs transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                                     {product.desc}
                                 </p>
+                                <div className="h-0.5 w-0 group-hover:w-full bg-brand-500 transition-all duration-700" />
                             </div>
                         </motion.div>
                     ))}

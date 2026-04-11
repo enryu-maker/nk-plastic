@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Outfit, Inter } from "next/font/google";
 import "./globals.css";
-import heroImg from "@/assets/hero-factory.jpg";
+import heroImg from "@/assets/factory-actual.jpg";
+
+import SchemaMarkup from "@/components/SchemaMarkup";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -14,15 +16,24 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "NK Plastic | Precision Polymer Solutions & Industrial Manufacturing",
-  description: "Leading the industry in precision plastic injection molding, high-quality polymer compounds, and innovative manufacturing solutions for global industrial needs.",
-  keywords: ["plastic manufacturing", "injection molding", "polymers", "NK Plastic", "industrial solutions", "precision molding"],
-  authors: [{ name: "NK Plastic Team" }],
+  title: "NK Plastics | Recycled Plastic Granules (LDPE/HDPE) & Grinding Solutions",
+  description: "Leading manufacturer and trader of high-purity recycled plastic granules (LDPE, HDPE) based in Ahmednagar, Maharashtra. Specialized in industrial polymer recycling, grinding, and sustainable material supply since 2005.",
+  keywords: [
+    "recycled plastic granules", 
+    "LDPE granules manufacturer", 
+    "HDPE granules production", 
+    "plastic grinding services", 
+    "polymer trading Maharashtra", 
+    "industrial plastic recycling", 
+    "NK Plastics Ahmednagar", 
+    "sustainable plastic waste management"
+  ],
+  authors: [{ name: "NK Plastics Team" }],
   openGraph: {
-    title: "NK Plastic | Precision Polymer Solutions",
-    description: "Leading industrial plastic manufacturing and precision injection molding services.",
-    url: "https://nkplastic.com",
-    siteName: "NK Plastic",
+    title: "NK Plastics | Premium Recycled Polymer Solutions",
+    description: "High-purity recycled LDPE/HDPE granules and precision grinding services for industrial manufacturing. Join our sustainable supply chain.",
+    url: "https://nkplastic.in",
+    siteName: "NK Plastics",
     images: [{ url: heroImg.src }],
     locale: "en_US",
     type: "website",
@@ -39,6 +50,7 @@ export default function RootLayout({
       <body
         className={`${outfit.variable} ${inter.variable} antialiased selection:bg-brand-500/20 selection:text-brand-950`}
       >
+        <SchemaMarkup />
         {children}
       </body>
     </html>

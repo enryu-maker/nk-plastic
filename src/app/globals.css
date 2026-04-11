@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-50: oklch(0.97 0.015 150);
-  --color-brand-100: oklch(0.92 0.035 150);
-  --color-brand-200: oklch(0.85 0.065 150);
-  --color-brand-500: oklch(0.35 0.1 150); /* Forest Green */
-  --color-brand-600: oklch(0.3 0.1 150);
-  --color-brand-900: oklch(0.15 0.05 150);
-  --color-brand-950: oklch(0.1 0.05 150);
+  --color-brand-50: oklch(0.97 0.02 150);
+  --color-brand-100: oklch(0.92 0.05 150);
+  --color-brand-200: oklch(0.85 0.08 150);
+  --color-brand-500: oklch(0.6 0.18 150); /* Vibrant Brand Green */
+  --color-brand-600: oklch(0.5 0.16 150);
+  --color-brand-900: oklch(0.2 0.08 150);
+  --color-brand-950: oklch(0.12 0.06 150);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -36,6 +36,9 @@
   --radius-5xl: 3rem;
   
   --animate-float: float 3s ease-in-out infinite;
+  /* Premium Industrial Backdrop */
+  --color-industrial-950: oklch(0.1 0.02 150);
+  --color-industrial-900: oklch(0.15 0.03 150);
 }
 
 :root {
@@ -45,20 +48,20 @@
   --card-foreground: oklch(0.12 0.015 150);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.12 0.015 150);
-  --primary: oklch(0.35 0.1 150);
+  --primary: oklch(0.6 0.18 150);
   --primary-foreground: oklch(0.99 0.005 150);
   --secondary: oklch(0.95 0.01 150);
   --secondary-foreground: oklch(0.32 0.09 153);
   --muted: oklch(0.95 0.01 150);
   --muted-foreground: oklch(0.45 0.02 150);
-  --accent: oklch(0.35 0.1 150);
+  --accent: oklch(0.6 0.18 150);
   --accent-foreground: oklch(0.99 0.005 150);
   --destructive: oklch(0.6 0.2 25);
   --destructive-foreground: oklch(0.99 0.005 150);
   --border: oklch(0.9 0.01 150);
   --input: oklch(0.9 0.01 150);
   --ring: oklch(0.32 0.09 153);
-  --radius: 0.75rem;
+  --radius: 1rem;
 }
 
 @layer base {
@@ -78,25 +81,62 @@
 }
 
 .glass {
-  background-color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(22, 101, 52, 0.05);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-dark {
+  background: rgba(17, 24, 39, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glow-brand {
+  box-shadow: 0 0 40px -10px var(--color-brand-500);
 }
 
 .text-gradient {
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  background-image: linear-gradient(to right, oklch(0.5 0.15 150), oklch(0.35 0.1 150));
+  background-image: linear-gradient(to bottom right, var(--color-brand-400), var(--color-brand-600));
 }
 
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(2deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
 
 .section-padding {
-  @apply py-20 md:py-32;
+  @apply py-24 md:py-40;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-brand-50);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-200);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-300);
 }
 
